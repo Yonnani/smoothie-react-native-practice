@@ -42,14 +42,13 @@ const SectionDescription = Styled.Text`
   color: ${Colors.dark};
 `;
 
-const HighLight = Styled.Text`
+const Highlight = Styled.Text`
   font-weight: 700;
 `;
 
 interface Props {}
 
 const App = ({}: Props) => {
-  console.log('dfdfdf');
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -59,9 +58,9 @@ const App = ({}: Props) => {
           <Header />
           <Body>
             <SectionContainer>
-              <SectionDescription>Step One2345</SectionDescription>
+              <SectionDescription>Step One</SectionDescription>
               <SectionDescription>
-                Edit <HighLight>App.js</HighLight> to change this screen and then come back to see your edits.
+                Edit <Highlight>App.js</Highlight> to changes this screen and then come back to see your edits.
               </SectionDescription>
             </SectionContainer>
             <SectionContainer>
