@@ -41,6 +41,7 @@ interface Props {
 
 interface State {
     count: number;
+    error: Boolean;
 }
 
 class Counter extends React.Component<Props, State> {
@@ -49,31 +50,79 @@ class Counter extends React.Component<Props, State> {
         console.log('constructor');
 
         this.state = {
-            count: props.initValue
+            count: props.initValue,
+            error: false
         };
     }
 
     render() {
+        console.log('render');
         const { title } = this.props;
-        const { count } = this.state;
+        const { count, error } = this.state;
 
         return (
             <Container>
-                {title && (
-                    <TitleContainer>
-                        <TitleLabel>{title}</TitleLabel>
-                    </TitleContainer>
+                {!error && (
+                    <>
+                        {title && (
+                            <TitleContainer>
+                                <TitleLabel>{title}</TitleLabel>
+                            </TitleContainer>
+                        )}
+                        <CountContainer>
+                            <CountLabel>{count}</CountLabel>
+                        </CountContainer>
+                        <ButtonContainer>
+                            <Button 
+                                iconName="plus" 
+                                onPress={() => this.setState({ count: count + 1 })} 
+                            />
+                            <Button 
+                                iconName="minus" 
+                                onPress={() => this.setState({ count: count - 1 })} 
+                            />
+                        </ButtonContainer>
+                    </>
                 )}
-                <CountContainer>
-                    <CountLabel>{count}</CountLabel>
-                </CountContainer>
-                <ButtonContainer>
-                    <Button iconName="plus" onPress={() => this.setState({ count: count + 1 })} />
-                    <Button iconName="minus" onPress={() => this.setState({ count: count - 1 })} />
-                </ButtonContainer>
             </Container>
         );
     }
-};
+
+    static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+        console.log('getDerivedStateFromProps');
+        return null;
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    getSnapshotBeforeUpdate(prevProps: Props, prevState: State) {
+        console.log('getSnapshotBeforeUpdate');
+
+        return {
+            testData: true
+        };
+    }
+
+    componentDidUpdate(prevProps: Props, prevState: State, snapshot: null) {
+        console.log('componentDidUpdate');
+    }
+
+    shouldComponentUpdate(nextProps: Props, nextState: State) {
+        console.log('shouldComponentUpdate');
+        return true;
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount');
+    }
+
+    componentDidCatch(error: Error, info: React.ErrorInfo) {
+        this.setState({
+            error: true
+        });
+    }
+}
 
 export default Counter;
