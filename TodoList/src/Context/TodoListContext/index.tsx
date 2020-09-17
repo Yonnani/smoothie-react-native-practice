@@ -41,6 +41,21 @@ const TodoListContextProvider = ({ children }: Props) => {
     useEffect(() => {
         initData();
     }, []);
+    /**
+     * useEffect 사용법
+     * 1. componentDidMount 같은 역할
+     *   - 두 번째 매개변수에 빈 배열 전달 시
+     *   - 컴포넌트가 처음 화면에 표시된 이후 한번만 호출됨
+     * 2. componentDidMount, componentDidUpdate 같은 역할
+     *   - 두 번째 매개변수 설정하지 않는 경우
+     *   - 컴포넌트가 처음 화면에 표시된 이후 실행, Props나 State가 변경되어 컴포넌트가 리렌더링된 후 실행
+     * 3. componentWillUnmount 같은 역할
+     *   - 첫 번째 매개변수 함수가 함수를 반환하는 경우
+     *   - 컴포넌트가 화면에서 사라진 후 반환된 함수가 호출됨
+     * 4. useEffect의 고유 기능
+     *   - 두 번째 매개변수로 배열 전달 시, 전달된 변수가 변경될 때만 함수가 호출됨
+     *   - 한 컴포넌트에 여러 번 정의하여 사용 가능
+     */
 
     return (
         <TodoListContext.Provider
