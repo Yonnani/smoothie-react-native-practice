@@ -5,7 +5,7 @@ import TodoInput from './TodoInput';
 
 interface Props {}
 
-const Addtodo = ({ }: Props) => {
+const AddTodo = ({ }: Props) => {
     const [showInput, setShowInput] = useState<boolean>(false);
     return (
         <>
@@ -17,3 +17,5 @@ const Addtodo = ({ }: Props) => {
         </>
     );
 };
+
+export default AddTodo;
