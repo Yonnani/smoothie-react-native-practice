@@ -11,6 +11,10 @@ const TodoListContext = createContext<ITodoListContext>({
     removeTodoList: (index: number): void => {},
 });
 
+/*
+    - Context 사용하기 위해서 공통 부모 컴포넌트에서 자신의 부모 컴포넌트로 Context의 프로바이더를 사용함
+    - 자식 컴포넌트를 children 매개변수로 전달받음
+ */
 const TodoListContextProvider = ({ children }: Props) => {
     const [todoList, setTodoList] = useState<Array<string>>([]);
 
