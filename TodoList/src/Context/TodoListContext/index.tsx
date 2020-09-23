@@ -19,21 +19,24 @@ const TodoListContextProvider = ({ children }: Props) => {
     const [todoList, setTodoList] = useState<Array<string>>([]);
 
     const addTodoList = (todo: string): void => {
-        const list = [...todoList, todo];
+        const list = [...todoList, todo]; // todoList는 불변값이므로 새 list 변수 추가
         setTodoList(list);
         AsyncStorage.setItem('todoList', JSON.stringify(list));
     };
 
     const removeTodoList = (index: number): void => {
-        let list = [...todoList];
+        let list = [...todoList]; // todoList는 불변값이므로 새 list 변수 추가
         list.splice(index, 1);
         setTodoList(list);
         AsyncStorage.setItem('todoList', JSON.stringify(list));
     };
 
+    /**
+     * 앱 시작 시, AsyncStorage에 저장된 데이터 불러와서 Context의 값을 초기화하기 위한 함수
+     */
     const initData = async () => {
         try {
-            const list = await AsyncStorage.getItem('todoList');
+            const list = await AsyncStorage.getItem('todoList'); // getItem은 promise 함수
             if (list !== null) {
                 setTodoList(JSON.parse(list));
             }
