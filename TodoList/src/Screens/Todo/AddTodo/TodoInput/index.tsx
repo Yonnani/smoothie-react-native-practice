@@ -5,6 +5,7 @@ import Styled from 'styled-components/native';
 import Background from './Background';
 import TextInput from './TextInput';
 
+// KeyboardAvoidingView: 키보드가 활성화되면서 입력창을 가리는 문제를 해결하기 위한 컴포넌트
 const Container = Styled.KeyboardAvoidingView`
     position: absolute;
     top: 0;

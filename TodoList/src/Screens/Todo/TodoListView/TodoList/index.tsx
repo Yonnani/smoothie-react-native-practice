@@ -18,8 +18,14 @@ const TodoList = ({}: Props) => {
     );
 
     return (
-        // ListEmptyComponent: 주어진 배열에 데이터가 없을 경우 표시되는 컴포넌트
-        // renderItem: 주어진 배열에 데이터를 사용하여 반복적으로 표시될 컴포넌트
+        /*
+        ListEmptyComponent
+            - 주어진 배열에 데이터가 없을 경우 표시되는 컴포넌트
+        renderItem
+            - 주어진 배열에 데이터를 사용하여 반복적으로 표시될 컴포넌트
+        contentContainerStyle={todoList.length === 0 && {flex: 1}}
+            - 표시할 데이터 없는 경우, 안내 문구의 row를 전체 화면으로 표시하기 위함
+         */
         <Container 
             data={todoList}
             keyExtractor={(item, index) => {

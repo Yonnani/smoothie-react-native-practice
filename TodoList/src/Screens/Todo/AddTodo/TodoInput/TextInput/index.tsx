@@ -17,6 +17,7 @@ interface Props {
 const TextInput = ({ hideTodoInput }: Props) => {
     const { addTodoList } = useContext<ITodoListContext>(TodoListContext);
     return (
+        // onSubmitEditing 함수: 키보드의 "완료" 버튼 눌렀을 때 호출되는 함수
         <Input 
             autoFocus={true}
             autoCapitalize="none"
